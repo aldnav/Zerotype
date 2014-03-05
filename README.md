@@ -1,3 +1,3 @@
 Zerotype
-Zerotype is a simple java implementation for agent-based modelling of a dengue-related infection and simulates the effect of 4 serotypes. Conceptual model used for the project is SIR(Suceptible-Infected-Recovered) model. Zerotype augments diverse effects when infection hits the Philippines, as of the writing, Cebu is in focus. Project is under developement. We, the developers, are willingly accepting suggestions, recommendations, requests for the betterment of the project.
 ========
+Zerotype is a simple java implementation for agent-based modelling of a dengue-related infection and simulates the effect of 4 serotypes. Conceptual model used for the project is SIR(Suceptible-Infected-Recovered) model. Zerotype augments diverse effects when infection hits the Philippines, as of the writing, Cebu is in focus. Project is under developement. We, the developers, are willingly accepting suggestions, recommendations, requests for the betterment of the project.
