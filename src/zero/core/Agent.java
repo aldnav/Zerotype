@@ -2,6 +2,7 @@ package zero.core;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Agent {
 
@@ -15,6 +16,9 @@ public class Agent {
 		{0, 0, 0},
 		{0, 0, 0}
 	};
+	
+	protected int latency1 = Environment.pref.latency1;
+	protected int latency2 = Environment.pref.latency2;
 
 	/**
 	 * Each agent is assumed to have neighbors. Space ignored since
@@ -27,41 +31,52 @@ public class Agent {
 		neighbors = new ArrayList<Agent>();
 	}
 
-	public boolean isSusceptibleWith(int n) {
+	protected boolean isSusceptibleWith(int n) {
 		return this.status[n][0] == 0 ? true : false;
 	}
 
-	public boolean isInfectedWith(int n) {
+	protected boolean isInfectedWith(int n) {
 		return this.status[n][1] == 1 ? true : false;
 	}
 
-	public boolean isResistantWith(int n) {
+	protected boolean isResistantWith(int n) {
 		return this.status[n][2] == 1 ? true : false;
 	}
 
-	public void setNeighbors(List<Agent> neighbors) {
+	protected void setNeighbors(List<Agent> neighbors) {
 		this.neighbors = neighbors;
 	}
 	
-	public boolean infectWith(int n) {
-		
-		if (this.isResistantWith(n)) {
+	protected boolean infectWith(int n) {
+		if (this.isInfectedWith(n)) {
 			return false;
 		}
 		
-		boolean neighborIsInfectious = true;		
-		for (Agent neighbor: neighbors) {			
-			if (this.isSusceptibleWith(n) && neighbor.isInfectedWith(n) && ((double)(Math.random()) < Environment.pref.infectionRate)) {
-				neighborIsInfectious = true;
-				break;
+		boolean hasInfectiousNeighbor = false;
+		for (Agent agent : this.neighbors) {
+			if (agent.isInfectedWith(n)) {
+				hasInfectiousNeighbor = true;
 			}
+			if (hasInfectiousNeighbor)
+				break;
 		}
-		if (neighborIsInfectious) {
+		
+		if (hasInfectiousNeighbor && (new Random(System.nanoTime()).nextDouble() < Environment.pref.infectionRate) ||
+			this.latency1 <= 0) {
 			this.status[n][0] = 1;
 			this.status[n][1] = 1;
 			return true;
 		}
 		return false;
+	}
+	
+	protected void updateLatency(int n) {
+		if (n == 0) {
+			if (latency1 > 0)
+				this.latency1--;
+		} else if (n == 1) {
+			this.latency2--;
+		}
 	}
 
 }

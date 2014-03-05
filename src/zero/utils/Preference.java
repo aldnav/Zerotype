@@ -9,6 +9,8 @@ public class Preference {
     public static double infectionRate;
     public static int initialInfected;
     public static int initialRecovered;
+    public static int latency1;
+    public static int latency2;
     public static int runDuration;
     public static int neighbors;
     public static boolean inYears;

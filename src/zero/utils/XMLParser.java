@@ -56,6 +56,14 @@ public class XMLParser {
 						event = inputEventReader.nextEvent();  
                         preference.initialRecovered = Integer.parseInt(event.asCharacters().getData());  
 					}
+					if (startElementName.equals("ser1-duration")) {
+						event = inputEventReader.nextEvent();
+                        preference.latency1 = Integer.parseInt(event.asCharacters().getData());  
+					}
+					if (startElementName.equals("ser2-duration")) {
+						event = inputEventReader.nextEvent();
+                        preference.latency2 = Integer.parseInt(event.asCharacters().getData());  
+					}
 					if (startElementName.equals("run-duration")) {
 						event = inputEventReader.nextEvent();  
                         preference.runDuration = Integer.parseInt(event.asCharacters().getData());  

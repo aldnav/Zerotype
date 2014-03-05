@@ -1,9 +1,9 @@
 <preferences>
     <environment>
         <population-size>1000</population-size>
-        <infection-rate>0.0</infection-rate>
-        <initial-infected>10</initial-infected>
-        <initial-recovered>30</initial-recovered>
+        <infection-rate>0.1</infection-rate>
+        <initial-infected>200</initial-infected>
+        <initial-recovered>0</initial-recovered>
         <run-duration>1</run-duration>
         <in-years>true</in-years>
         <ser1-duration>7</ser1-duration>

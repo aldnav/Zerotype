@@ -2,10 +2,7 @@ package zero.core;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import zero.utils.Preference;
 import zero.utils.XMLParser;
 
@@ -15,49 +12,40 @@ import zero.utils.XMLParser;
 
 public class Environment {
     static Preference pref;
-    Set<Agent> population;
-    int infected1 = 0;
+    List<Agent> population;
+    int infected = 0;
+    int susceptible = 0;
 
     public Environment() {
         pref = XMLParser.pull("src/zero/data/preferences.xml");
+        System.out.println(pref);
         initPopulation();
-        displayInfectStatus();
-        initInfected();
-        displayInfectStatus();
-        initResistant();
         initNeighbors();
-        displayInfectStatus();
+        initInfected();
     }
     
-    private void displayInfectStatus() {
-    	int infected = 0;
-    	for (Agent agent: population) {
-    		if (agent.isInfectedWith(0)) {
-    			infected++;
-    		}
-    	}
-    	System.out.println("Infected: " + infected + " out of " + pref.populationSize);
-    }
-
     private void initPopulation() {
-    	population = new HashSet<Agent>();
+    	population = new ArrayList<Agent>();
     	for (int i = 0; i < pref.populationSize; i++) {
     		population.add(new Agent());
     	}
+    	susceptible = pref.populationSize;
     }
     
     private void initInfected() {
     	for (Agent human: population) {
     		human.status[0][0] = 1;
 			human.status[0][1] = 1;
-    		infected1++;
-    		if (infected1 == pref.initialInfected)
+			human.latency1 = (int)(Math.random() * ((human.latency1) + 1));
+    		infected++;
+    		susceptible--;
+    		if (infected == pref.initialInfected)
     			break;
     	}
     }
     
     private void initResistant() {
-    	
+
     }
 
     private void initNeighbors() {
@@ -67,25 +55,47 @@ public class Environment {
     		Collections.shuffle(poplist);
     		human.setNeighbors(poplist.subList(0, pref.neighbors));
     	}
-    	population = new HashSet<Agent>(poplist);
+    	population = new ArrayList<Agent>(poplist);
     	poplist = null;
     }
     
-    private void destruct() {
-    	pref = null;
-    	population = null;
+    public void simulate() {
+    	int run = pref.runDuration;
+    	if (pref.inYears) {
+    		run *= 365;
+    	}
+    	System.out.println("Simulation started.");
+    	
+    	// Go for every time step from day 1    	
+    	for (int i = 0; i < run; i++) {
+    		// Evaluate each person in population for possiblity of getting infected
+    		for (Agent human : population) {
+    			if (human.infectWith(0)) {
+    				infected++;
+    				susceptible--;
+    			}
+    		}
+    		
+    		// Evaluate each person's latency rate
+    		for (Agent human: population) {
+    			if (human.isInfectedWith(0))
+    				human.updateLatency(0);
+    		}
+    		
+    		System.out.print((i+1) + " : ");
+    		displayStatus();
+    	}
+    	System.out.println("Simulation ended.");
     }
     
-    public void simulate() {
-    	
+    private void displayStatus() {
+    	System.out.println("S: " + susceptible + " I: " + infected);
     }
 
     public static void main(String[] args) {
         Environment env = new Environment();
-        System.out.println(env.pref);
         env.simulate();
-        System.out.println(env.infected1);
-        env = null;
+        
     }
 
 }
