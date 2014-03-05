@@ -1,8 +1,8 @@
 <preferences>
     <environment>
         <population-size>1000</population-size>
-        <infection-rate>0.25</infection-rate>
-        <initial-infected>200</initial-infected>
+        <infection-rate>0.0</infection-rate>
+        <initial-infected>10</initial-infected>
         <initial-recovered>30</initial-recovered>
         <run-duration>1</run-duration>
         <in-years>true</in-years>
@@ -10,6 +10,7 @@
         <ser2-duration>5</ser2-duration>
         <ser3-duration>4</ser3-duration>
         <ser4-duration>6</ser4-duration>
+        <neighbors>20</neighbors>
         <out-daily>results-dayly.out</out-daily>
         <out-yearly>results-yearly.out</out-yearly>
     </environment>

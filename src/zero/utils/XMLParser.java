@@ -13,15 +13,17 @@ import javax.xml.stream.events.XMLEvent;
  * 
  * @author aldnav
  */
+
 public class XMLParser {
 	
 	/**
-	 * Retrieve preferences.
+	 * Read XML file and save environment variables to 
+	 * preferences.
 	 * 
 	 * @param FilePath
 	 * @return Preference
 	 */
-	public static Preference pullPreference(String url) {
+	public static Preference pull(String url) {
 		Preference preference = null;
 		
 		try {
@@ -61,6 +63,10 @@ public class XMLParser {
 					if (startElementName.equals("in-years")) {
 						event = inputEventReader.nextEvent();  
                         preference.inYears = Boolean.parseBoolean(event.asCharacters().getData());  
+					}
+					if (startElementName.equals("neighbors")) {
+						event = inputEventReader.nextEvent();  
+                        preference.neighbors = Integer.parseInt(event.asCharacters().getData());  
 					}
 				}				
 			}

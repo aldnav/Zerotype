@@ -5,12 +5,13 @@ package zero.utils;
  */
 public class Preference {
 
-    static int populationSize;
-    static double infectionRate;
-    static int initialInfected;
-    static int initialRecovered;
-    static int runDuration;
-    static boolean inYears;
+    public static int populationSize;
+    public static double infectionRate;
+    public static int initialInfected;
+    public static int initialRecovered;
+    public static int runDuration;
+    public static int neighbors;
+    public static boolean inYears;
     
     public String toString() {
     	String s = "Preference\n";
