@@ -47,6 +47,17 @@ public class Agent {
 		this.neighbors = neighbors;
 	}
 	
+	/**
+	 * If agent is already infected, then we cannot infect anymore, granted immunity
+	 * with serotype n. If still susceptible, its not necesarrily that the human
+	 * gets infected right away. First, check if there is an infectious neighbor.
+	 * And if there is, check how infectious this neighbor is. If it is off-threshold
+	 * of the infection rate, then this human should be infected.
+	 * 
+	 * @param n The N-serotype
+	 * @return True if possible infection
+	 * @return False if cannot be infected
+	 * */
 	protected boolean infectWith(int n) {
 		if (this.isInfectedWith(n)) {
 			return false;
@@ -70,6 +81,9 @@ public class Agent {
 		return false;
 	}
 	
+	/**
+	 * Updates the latency. Use only when human is infected.
+	 * */
 	protected void updateLatency(int n) {
 		if (n == 0) {
 			if (latency1 > 0)
