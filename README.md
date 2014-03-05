@@ -1,17 +1,17 @@
 Zerotype
-========
+--------
 Zerotype is a simple java implementation for agent-based modelling of a dengue-related infection and simulates the effect of 4 serotypes. Conceptual model used for the project is SIR(Suceptible-Infected-Recovered) model. Zerotype augments diverse effects when infection hits the Philippines, as of the writing, Cebu is in focus. Project is under developement. We, the developers, are willingly accepting suggestions, recommendations, requests for the betterment of the project.
 
 ## Agent
---------
+========
 The basic unit of population. An agent has properties and behavior and knows it's **environment**. An agent's behavior is dependent with the environment and could also be influenced by its neighbors. Random sample would be a work-around for non-spatial simulation.
 
 ##Environment
--------------
+=============
 The environment has it's own behavior too. It is capable of altering the population through its properties. It's properties are refered to as **preferences**.
 
 ##Preferences
--------------
+=============
 This is responsible for the **environment**'s properties. The preference could be altered through the __preferences.xml__. The important properties include:
 
   * **population-size** The total population count.
