@@ -14,14 +14,14 @@ The environment has it's own behavior too. It is capable of altering the populat
 -------------
 This is responsible for the **environment**'s properties. The preference could be altered through the __preferences.xml__. The important properties include:
 
-..* **population-size** The total population count.
-..* ~~**infection-rate**~~ Rather the infection probability (subject for change for next increment).
-..* **initial-infected** Sets the number of initially infected agents.
-..* ~~**initial-recovered**~~ Sets the number of initially ~~recovered~~ resistant (subject for change for next increment).
-..* **run-duration** Specify the simulation run duration.
-..* **in-years** Specify if run duration be in years(true) or days(false).
-..* **ser1-duration** The latency period in days if infected with serotype 1.
-..* **ser2-duration** The latency period in days if infected with serotype 2.
-..* **neighbors** The number of neighbors each agent could have.
-..* **out-daily** __Not implemented yet.__
-..* **out-yearly** __Not implemented yet.__
+  * **population-size** The total population count.
+  *  ~~**infection-rate**~~ Rather the infection probability (subject for change for next increment).
+  *  **initial-infected** Sets the number of initially infected agents.
+  *  ~~**initial-recovered**~~ Sets the number of initially ~~recovered~~ resistant (subject for change for next increment).
+  * **run-duration** Specify the simulation run duration.
+  * **in-years** Specify if run duration be in years(true) or days(false).
+  * **ser1-duration** The latency period in days if infected with serotype 1.
+  * **ser2-duration** The latency period in days if infected with serotype 2.
+  * **neighbors** The number of neighbors each agent could have.
+  * **out-daily** __Not implemented yet.__
+  * **out-yearly** __Not implemented yet.__
