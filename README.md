@@ -1,6 +1,6 @@
-Zerotype
+#Zerotype
 --------
-Zerotype is a simple java implementation for agent-based modelling of a dengue-related infection and simulates the effect of 4 serotypes. Conceptual model used for the project is SIR(Suceptible-Infected-Recovered) model. Zerotype augments diverse effects when infection hits the Philippines, as of the writing, Cebu is in focus. Project is under developement. We, the developers, are willingly accepting suggestions, recommendations, requests for the betterment of the project.
+Zerotype is a simple java implementation for agent-based modelling of a dengue-related infection and simulates the effect of ~~4~~2 serotypes. Conceptual model used for the project is SIR(Suceptible-Infected-~~Recovered~~Resistant) model. Zerotype augments diverse effects when infection hits the Philippines. As of the writing, Cebu is in focus. Project is under developement. We, the developers, are willingly accepting suggestions, recommendations, requests for the betterment of the project.
 
 ## Agent
 ========
@@ -22,6 +22,10 @@ This is responsible for the **environment**'s properties. The preference could b
   * **in-years** Specify if run duration be in years(true) or days(false).
   * **ser1-duration** The latency period in days if infected with serotype 1.
   * **ser2-duration** The latency period in days if infected with serotype 2.
+  * (__alpha1-duration__) The period in days before a person gets infected with serotype 1.
+  * (__alpha2-duration__) The period in days before a person gets infected with serotype 2.
+  * (__beta1-duration__) The period in days before a person gets resistant with serotype 1.
+  * (__beta2-duration__) The period in days before a person gets resistant with serotype 2.
   * **neighbors** The number of neighbors each agent could have.
-  * **out-daily** __Not implemented yet.__
-  * **out-yearly** __Not implemented yet.__
+  * **out-daily** (Not implemented yet.)
+  * **out-yearly** (Not implemented yet.)
